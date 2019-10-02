@@ -21,9 +21,9 @@
       <h1>Restaurant Le Lit</h1>
       <h3>Make Your Reservation</h3>
       <hr />
-      <a href="/"
+      <a href="/tables"
         ><button class="btn btn-danger btn-lg">
-          <span class="fa fa-plus"></span> Make New Reservation
+          <span class="fa fa-plus"></span> View Tables
         </button></a
       >
       <a href="/hot"
@@ -70,5 +70,33 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      // Question: What does this code do?
+      $("#add-btn").on("click", function(event) {
+        event.preventDefault();
+        var newCharacter = {
+          name: $("#name")
+            .val()
+            .trim(),
+          phoneNumber: $("#phone-number")
+            .val()
+            .trim(),
+          email: $("#email")
+            .val()
+            .trim(),
+          uniqueID: $("#unique-id")
+            .val()
+            .trim()
+        }
+          // Question: What does this code do??
+      $.post("/api/tables", newReservation)
+        .then(function(data) {
+          console.log("add.html", data);
+          alert("Adding reservation");
+        });
+    });
+  </script>
+        
   </body>
+  
 </html>
